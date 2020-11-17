@@ -28,6 +28,34 @@ namespace Repository.Mongo.Tests
         }
 
         [Fact]
+        public void Upsert_Entity()
+        {
+            var entity = new Sample();
+
+            entity.Name = "Pippo";
+
+            repository.Upsert(entity);
+
+            var dbEntity = repository.Get(entity.Id);
+
+            Assert.Equal(entity.Id, dbEntity.Id);
+            Assert.Equal(entity.Name, dbEntity.Name);
+            Assert.Equal("Pippo", dbEntity.Name);
+
+            // update it
+            entity.Name = "Pappo";
+
+            repository.Upsert(entity);
+
+            dbEntity = repository.Get(entity.Id);
+
+            Assert.Equal(entity.Id, dbEntity.Id);
+            Assert.Equal(entity.Name, dbEntity.Name);
+            Assert.Equal("Pappo", dbEntity.Name);
+
+        }
+
+        [Fact]
         public void Update_Entity()
         {
             var entity = new Sample();

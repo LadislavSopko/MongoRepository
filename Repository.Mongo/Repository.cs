@@ -559,6 +559,43 @@ namespace Repository.Mongo
         }
         #endregion Insert
 
+        #region Upsert
+
+        /// <summary>
+        /// upsert entity
+        /// </summary>
+        /// <param name="entity">entity</param>
+        public virtual bool Upsert(T entity)
+        {
+            return Retry(() =>
+            {
+                return Collection.ReplaceOne(
+                    e => e.Id == entity.Id,
+                    entity,
+                    new ReplaceOptions() { IsUpsert = true }
+                ).IsAcknowledged;
+            });
+        }
+
+        /// <summary>
+        /// upsert entity
+        /// </summary>
+        /// <param name="entity">entity</param>
+        public virtual Task<ReplaceOneResult> UpsertAsync(T entity)
+        {
+            return Retry(() =>
+            {
+                return Collection.ReplaceOneAsync(
+                    e => e.Id == entity.Id,
+                    entity,
+                    new ReplaceOptions() { IsUpsert = true }
+                );
+            });
+        }
+
+        
+        #endregion Insert
+
         #region Last
 
         /// <summary>

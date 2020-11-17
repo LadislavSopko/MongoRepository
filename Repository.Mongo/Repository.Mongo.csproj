@@ -4,7 +4,7 @@
     <Description>Repository pattern for MongoDB</Description>
     <AssemblyTitle>Repository.Mongo</AssemblyTitle>
     <Authors>Usame Esendir</Authors>
-    <TargetFrameworks>netstandard1.5;netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard1.5;netstandard2.0;net48</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Repository.Mongo</AssemblyName>
     <PackageId>Repository.Mongo</PackageId>

@@ -270,6 +270,24 @@ namespace Repository.Mongo
 
         #endregion Insert
 
+        #region Upsert
+
+        /// <summary>
+        /// Upsert entity
+        /// </summary>
+        /// <param name="entity">entity</param>
+        bool Upsert(T entity);
+
+        /// <summary>
+        /// Upsert entity
+        /// </summary>
+        /// <param name="entity">entity</param>
+        Task<ReplaceOneResult> UpsertAsync(T entity);
+
+        
+
+        #endregion Upsert
+
         #region Last
 
         /// <summary>
